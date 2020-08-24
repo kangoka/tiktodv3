@@ -137,7 +137,7 @@ print("")
 
 """
 You can change auto value below
-auto = 1 for auto fans
+auto = 1 for auto hearts
 auto = 2 for auto views
 auto = 3 for auto views + hearts
 """
