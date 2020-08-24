@@ -60,7 +60,7 @@ def loop2():
         driver.refresh()
         i += 1
         total = i * 10
-        print("Views success delivered! Total estimated", total,"hearts")
+        print("Hearts success delivered! Total estimated", total,"hearts")
         time.sleep(110)
         loop2()
     except:
