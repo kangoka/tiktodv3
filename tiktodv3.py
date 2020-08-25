@@ -67,7 +67,7 @@ def loop2():
         print("An error occured. Now will retry again")
         driver.refresh()
         loop2()
-
+"""
 def loop3():
     def hearts():
         global i, x, a
@@ -128,6 +128,7 @@ def loop3():
             views()
 
     hearts()
+"""
 
 vidUrl = "YOUR_URL" #Change YOUR_URL to your Tik Tok video URL. This URL used to get views or hearts or both
 
@@ -141,16 +142,13 @@ print("")
 You can change auto value below
 auto = 1 for auto views
 auto = 2 for auto hearts
-auto = 3 for auto views + hearts
+auto = 3 for auto views + hearts (NEW UPDATE: CAN'T RUN AUTO VIEWS + AUTO HEARTS AT THE SAME TIME)
 """
 auto = 1
 
 if auto == 1:
     driver.get("https://vipto.de/")
     loop1()
-elif auto == 2:
-    driver.get("https://vipto.de/")
-    loop2()
 else:
     driver.get("https://vipto.de/")
-    loop3()
+    loop2()
