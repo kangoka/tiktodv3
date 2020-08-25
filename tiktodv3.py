@@ -61,7 +61,7 @@ def loop2():
         driver.find_element_by_xpath("/html/body/div[3]/div[3]/div/div/div/div/div[1]/div/form/button").click()
         driver.refresh()
         i += 1
-        total = i * 10
+        total = i * 25
         print("Hearts success delivered! Total estimated", total,"hearts")
         time.sleep(110)
         loop2()
@@ -90,7 +90,7 @@ def loop3():
             driver.find_element_by_xpath("/html/body/div[3]/div[3]/div/div/div/div/div[1]/div/form/button").click()
             driver.refresh()
             a += 1
-            total = a * 10
+            total = a * 25
             print("Hearts success delivered! Total estimated", total,"hearts")
             views()
         except:
