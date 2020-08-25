@@ -61,7 +61,7 @@ def loop2():
         i += 1
         total = i * 25
         print("Hearts success delivered! Total estimated", total,"hearts")
-        time.sleep(110)
+        time.sleep(290)
         loop2()
     except:
         print("An error occured. Now will retry again")
