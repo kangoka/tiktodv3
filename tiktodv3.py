@@ -1,7 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
-from colorama import init
-from colorama import Fore, Back, Style
 import pyfiglet
 from os import system
 import time
