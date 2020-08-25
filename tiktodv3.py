@@ -117,7 +117,7 @@ def loop3():
             i += 1
             total = i * 1000
             print("Views success delivered! Total", total,"views")
-            if x < 9:
+            if x < 5:
                 time.sleep(50)
                 views()
             else:
