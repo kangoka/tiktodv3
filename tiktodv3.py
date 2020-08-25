@@ -22,7 +22,8 @@ def loop1():
     try:
         driver.find_element_by_xpath("/html/body/div[3]/div[1]/div[3]/div/div[4]/div/button").click()
     except:
-        print("You didn't solve the captcha yet")
+        print("You didn't solve the captcha yet. Need to refresh to avoid endless loop.")
+        driver.refresh()
         loop1()
     try:
         time.sleep(2)
@@ -48,7 +49,8 @@ def loop2():
     try:
         driver.find_element_by_xpath("/html/body/div[3]/div[1]/div[3]/div/div[2]/div/button").click()
     except:
-        print("You didn't solve the captcha yet")
+        print("You didn't solve the captcha yet. Need to refresh to avoid endless loop.")
+        driver.refresh()
         loop2()
     try:
         time.sleep(2)
@@ -76,7 +78,8 @@ def loop3():
         try:
             driver.find_element_by_xpath("/html/body/div[3]/div[1]/div[3]/div/div[2]/div/button").click()
         except:
-            print("You didn't solve the captcha yet")
+            print("You didn't solve the captcha yet. Need to refresh to avoid endless loop.")
+            driver.refresh()
             hearts()
         try:
             time.sleep(2)
@@ -101,7 +104,8 @@ def loop3():
         try:
             driver.find_element_by_xpath("/html/body/div[3]/div[1]/div[3]/div/div[4]/div/button").click()
         except:
-            print("You didn't solve the captcha yet")
+            print("You didn't solve the captcha yet. Need to refresh to avoid endless loop.")
+            driver.refresh()
             views()
         try:
             time.sleep(2)
@@ -137,8 +141,8 @@ print("")
 
 """
 You can change auto value below
-auto = 1 for auto hearts
-auto = 2 for auto views
+auto = 1 for auto views
+auto = 2 for auto hearts
 auto = 3 for auto views + hearts
 """
 auto = 1
