@@ -34,7 +34,7 @@ def loop1():
         i += 1
         total = i * 1000
         print("Views success delivered! Total", total,"views")
-        time.sleep(20)
+        time.sleep(50)
         loop1()
     except:
         print("An error occured. Now will retry again")
@@ -118,7 +118,7 @@ def loop3():
             total = i * 1000
             print("Views success delivered! Total", total,"views")
             if x < 9:
-                time.sleep(20)
+                time.sleep(50)
                 views()
             else:
                 hearts()
