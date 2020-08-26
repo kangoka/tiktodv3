@@ -17,7 +17,7 @@ auto = 1 #Read comment above this line for more info</pre>
 ## Few things
 1. Use RDP to get tons of views or fans (run 24/7)
 2. If you are using Chrome ver 84, you don't need to download chromedriver again (won't cause error). But, if you are not using Chrome ver 84, then download the right version like your Chrome version. [**Download here**](https://chromedriver.chromium.org/downloads)
-3. If the website update like removed one or some features, just change the auto value. e.g If the website removed auto views, you use auto hearts features only, don't use value = 1 or value = 3
+3. If the website update like removed one or some features, just change the auto value. e.g If the website removed auto views, you can use auto hearts features only, don't use value = 1 or value = 3
 
 ## Result preview
 ![Preview](https://i.imgur.com/WZY91W6.png)
