@@ -34,7 +34,7 @@ def loop1():
         i += 1
         total = i * 1000
         print("Views success delivered! Total", total,"views")
-        time.sleep(50)
+        time.sleep(110)
         loop1()
     except:
         print("An error occured. Now will retry again")
