@@ -34,7 +34,7 @@ def loop1():
         i += 1
         total = i * 1000
         print("Views success delivered! Total", total,"views")
-        time.sleep(110)
+        time.sleep(55)
         loop1()
     except:
         print("An error occured. Now will retry again")
@@ -45,23 +45,22 @@ def loop2():
     global i
     time.sleep(10)
     try:
-        driver.find_element_by_xpath("/html/body/div[3]/div[1]/div[3]/div/div[2]/div/button").click()
+        driver.find_element_by_xpath("/html/body/div[4]/div[1]/div[3]/div/div[2]/div/button").click()
     except:
         print("You didn't solve the captcha yet. Need to refresh to avoid endless loop.")
         driver.refresh()
         loop2()
     try:
         time.sleep(2)
-        driver.find_element_by_xpath("/html/body/div[3]/div[3]/div/div/div/form/div/input").send_keys(vidUrl)
+        driver.find_element_by_xpath("/html/body/div[4]/div[3]/div/div/div/form/div/input").send_keys(vidUrl)
         time.sleep(1)
-        driver.find_element_by_xpath("/html/body/div[3]/div[3]/div/div/div/form/div/div/button").click()
+        driver.find_element_by_xpath("/html/body/div[4]/div[3]/div/div/div/form/div/div/button").click()
         time.sleep(2)
-        driver.find_element_by_xpath("/html/body/div[3]/div[3]/div/div/div/div/div[1]/div/form/button").click()
+        driver.find_element_by_xpath("/html/body/div[4]/div[3]/div/div/div/div/div[1]/div/form/button").click()
         driver.refresh()
-        i += 1
-        total = i * 25
-        print("Hearts success delivered! Total estimated", total,"hearts")
-        time.sleep(290)
+        hearts = driver.find_element_by_xpath('//*[@id="c2VuZE9nb2xsb3dlcnNfdGlrdG9r"]/span').text
+        print(hearts," Success delivered!")
+        time.sleep(605)
         loop2()
     except:
         print("An error occured. Now will retry again")
