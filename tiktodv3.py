@@ -171,7 +171,7 @@ auto = 2 for auto hearts
 auto = 3 for auto views + hearts (PATCHED)
 auto = 4 for auto followers
 """
-auto = 4 #Change this
+auto = 1 #Change this
 
 if auto == 1:
     driver.get("https://vipto.de/")
