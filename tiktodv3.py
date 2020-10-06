@@ -18,7 +18,7 @@ def loop1():
     global i
     time.sleep(10)
     try:
-        driver.find_element_by_xpath("/html/body/div[4]/div[1]/div[3]/div/div[3]/div/button").click()
+        driver.find_element_by_xpath("/html/body/div[4]/div[1]/div[3]/div/div[4]/div/button").click()
     except:
         print("You didn't solve the captcha yet. Need to refresh to avoid endless loop.")
         driver.refresh()
