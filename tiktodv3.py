@@ -25,11 +25,11 @@ def loop1():
         loop1()
     try:
         time.sleep(2)
-        driver.find_element_by_xpath("/html/body/div[4]/div[4]/div/div/div/form/div/input").send_keys(vidUrl)
+        driver.find_element_by_xpath("//*[@id=\"sid4\"]/div/div/div/form/div/input").send_keys(vidUrl)
         time.sleep(1)
-        driver.find_element_by_xpath("/html/body/div[4]/div[4]/div/div/div/form/div/div/button").click()
+        driver.find_element_by_xpath("//*[@id=\"sid4\"]/div/div/div/form/div/div/button").click()
         time.sleep(2)
-        driver.find_element_by_xpath("/html/body/div[4]/div[4]/div/div/div/div/div[1]/div/form/button").click()
+        driver.find_element_by_xpath("//*[@id=\"c2VuZC9mb2xsb3dlcnNfdGlrdG9V\"]/div[1]/div/form/button").click()
         driver.refresh()
         i += 1
         total = i * 1000
