@@ -30,11 +30,12 @@ def loop1():
         driver.find_element_by_xpath("//*[@id=\"sid4\"]/div/div/div/form/div/div/button").click()
         time.sleep(2)
         driver.find_element_by_xpath("//*[@id=\"c2VuZC9mb2xsb3dlcnNfdGlrdG9V\"]/div[1]/div/form/button").click()
+        time.sleep(3)
         driver.refresh()
         i += 1
         total = i * 1000
         print("Views success delivered! Total", total,"views")
-        time.sleep(55)
+        time.sleep(60)
         loop1()
     except:
         print("An error occured. Now will retry again")
@@ -52,15 +53,17 @@ def loop2():
         loop2()
     try:
         time.sleep(2)
-        driver.find_element_by_xpath("/html/body/div[4]/div[3]/div/div/div/form/div/input").send_keys(vidUrl)
+        driver.find_element_by_xpath('//*[@id="sid2"]/div/div/div/form/div/input').send_keys(vidUrl)
         time.sleep(1)
-        driver.find_element_by_xpath("/html/body/div[4]/div[3]/div/div/div/form/div/div/button").click()
-        time.sleep(2)
-        driver.find_element_by_xpath("/html/body/div[4]/div[3]/div/div/div/div/div[1]/div/form/button").click()
-        driver.refresh()
+        driver.find_element_by_xpath('//*[@id="sid2"]/div/div/div/form/div/div/button').click()
+        time.sleep(5)
+        driver.find_element_by_xpath('//*[@id="c2VuZE9nb2xsb3dlcnNfdGlrdG9r"]/div[1]/div/form/button').click()
+        time.sleep(6)
         hearts = driver.find_element_by_xpath('//*[@id="c2VuZE9nb2xsb3dlcnNfdGlrdG9r"]/span').text
-        print(hearts," Success delivered!")
-        time.sleep(605)
+        time.sleep(1)
+        driver.refresh()
+        print(hearts)
+        time.sleep(310)
         loop2()
     except:
         print("An error occured. Now will retry again")
@@ -139,24 +142,23 @@ def loop4():
         loop4()
     try:
         time.sleep(2)
-        driver.find_element_by_xpath("/html/body/div[4]/div[2]/div/div/div/form/div/input").send_keys(username)
+        driver.find_element_by_xpath('//*[@id="sid"]/div/div/div/form/div/input').send_keys(vidUrl)
         time.sleep(1)
-        driver.find_element_by_xpath("/html/body/div[4]/div[2]/div/div/div/form/div/div/button").click()
-        time.sleep(3)
-        driver.find_element_by_xpath("/html/body/div[4]/div[2]/div/div/div/div/form/button").click()
-        time.sleep(2)
+        driver.find_element_by_xpath('//*[@id="sid"]/div/div/div/form/div/div/button').click()
+        time.sleep(5)
+        driver.find_element_by_xpath('//*[@id="c2VuZF9mb2xsb3dlcnNfdGlrdG9r"]/div[1]/div/form/button').click()
+        time.sleep(6)
         folls = driver.find_element_by_xpath('//*[@id="c2VuZF9mb2xsb3dlcnNfdGlrdG9r"]/span').text
         print(folls)
         driver.refresh()
-        time.sleep(318)
+        time.sleep(310)
         loop4()
     except:
         print("An error occured. Now will retry again")
         driver.refresh()
         loop4()
 
-vidUrl = "YOUR_URL" #Change YOUR_URL to your Tik Tok video URL. This URL used to get views or hearts or both
-username = "YOUR_USERNAME" #Change YOUR_USERNAME to your Tik Tok username
+vidUrl = "YOUR_URL" #Change YOUR_URL to your Tik Tok video URL.
 
 system("cls")
 tiktod = pyfiglet.figlet_format("TIKTOD V3", font="slant")
