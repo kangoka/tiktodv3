@@ -9,8 +9,7 @@ pip install pyfiglet==0.7.5</pre>
 1. Download this repo
 2. Make sure all dependencies installed
 3. Open tiktodv3.py using Code Editor and edit line
-<pre>vidUrl = "YOUR_URL" #Change YOUR_URL to your Tik Tok video URL
-auto = 1 #Read comment above this line for more info</pre>
+<pre>vidUrl = "YOUR_URL" #Change YOUR_URL to your Tik Tok video URL</pre>
 4. python tiktodv3.py
 5. **You still have to manual complete captcha check (only for first time you run the code)**
 
