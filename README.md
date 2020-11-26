@@ -22,7 +22,7 @@ pip install pyfiglet==0.7.5</pre>
 ![Preview](https://i.imgur.com/WZY91W6.png)
 
 ## Special thanks
-1. Thanks to https://vipto.de/ for providing great free service like this
+1. Thanks to https://ketuy.com/ for providing great free service like this
 2. People who ask for and recommend this website
 
 ## Tik Tok Auto Views V1 (DON'T USE V1)
