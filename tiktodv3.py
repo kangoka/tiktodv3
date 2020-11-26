@@ -176,14 +176,14 @@ auto = 4 for auto followers
 auto = 1 #Change this
 
 if auto == 1:
-    driver.get("https://vipto.de/")
+    driver.get("https://ketuy.com/")
     loop1()
 elif auto == 2:
-    driver.get("https://vipto.de/")
+    driver.get("https://ketuy.com/")
     loop2()
 elif auto == 3:
-    driver.get("https://vipto.de/")
+    driver.get("https://ketuy.com/")
     loop3()
 else:
-    driver.get("https://vipto.de/")
+    driver.get("https://ketuy.com/")
     loop4()
