@@ -64,7 +64,7 @@ def loop1():
         driver.find_element_by_xpath("//*[@id=\"c2VuZC9mb2xsb3dlcnNfdGlrdG9V\"]/div[1]/div/form/button").click()
         driver.refresh()
         Views += 1000
-        sleep(60)
+        sleep(150)
         loop1()
     except:
         print("> An error occured. Now will retry again")
