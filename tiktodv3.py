@@ -82,14 +82,14 @@ def loop1():
         driver.find_element_by_xpath("//*[@id=\"c2VuZC9mb2xsb3dlcnNfdGlrdG9V\"]/div[1]/div/form/button").click()
         
         driver.refresh()
-        Views += 500 # When testing, the test-video gained +500 views instead of +1000
+        Views += 500 
         print("[+] Views sended!")
         
-        sleep(150)
+        sleep(120)
         loop1()
         
     except:
-        print("[-] An error occured. Retrying..") # "Now will try again" is trashy grammar. I replaced it with "Retrying.."
+        print("[-] An error occured. Retrying..") 
         driver.refresh()
         loop1()
 
@@ -128,7 +128,7 @@ def loop2():
         loop2()
         
     except:
-        print("[-] An error occured. Retrying..") # "Now will try again" is trashy grammar. I replaced it with "Retrying.."
+        print("[-] An error occured. Retrying..") 
         driver.refresh()
         loop2()
 
@@ -165,7 +165,7 @@ def loop3():
         loop3()
         
     except:
-        print("[-] An error occured. Retrying..") # "Now will try again" is trashy grammar. I replaced it with "Retrying.."
+        print("[-] An error occured. Retrying..")
         driver.refresh()
         loop3()
 
@@ -202,7 +202,7 @@ elif auto == 3:
     b.start()
     
 elif auto == 4:
-    print("[+] This program was created by @kongoka. [github.com/kangoka]")
+    print("[+] This program was created by @kangoka. [github.com/kangoka]")
     print("[+] This program was origionally uploaded to github.com/kangoka/tiktodv3.")
     print("[+] This program was majorly improved by @XxBiancaXx. [github.com/XxBiancaXx]")
     print("[+] Views xPath problem solved by @NoNameoN-A. [github.com/NoNameoN-A]")
