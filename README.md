@@ -1,4 +1,4 @@
-## Install requirements
+## Install the requirements
 <pre>pip install selenium
 pip install pyfiglet==0.7.5</pre>
 
