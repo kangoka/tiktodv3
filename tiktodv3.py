@@ -204,7 +204,7 @@ elif auto == 3:
 elif auto == 4:
     print("[+] This program was created by @kangoka. [github.com/kangoka]")
     print("[+] This program was origionally uploaded to github.com/kangoka/tiktodv3.")
-    print("[+] This program was majorly improved by @XxBi1a. [github.com/XxB1a]")
+    print("[+] This program was majorly improved by @XxBiancaXx. [github.com/XxBiancaXx]")
     print("[+] Views xPath problem solved by @NoNameoN-A. [github.com/NoNameoN-A]")
     
 else:
