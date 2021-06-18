@@ -82,10 +82,10 @@ def loop1():
         driver.find_element_by_xpath("//*[@id=\"c2VuZC9mb2xsb3dlcnNfdGlrdG9V\"]/div[1]/div/form/button").click()
         
         driver.refresh()
-        Views += 500 
+        Views += 1000
         print("[+] Views sended!")
         
-        sleep(120)
+        sleep(300)
         loop1()
         
     except:
