@@ -175,7 +175,7 @@ print(pyfiglet.figlet_format("TIKTOD V3", font="slant"))
 print("Log:")
 
 if auto == 1:
-    driver.get("https://ketuy.com/")
+    driver.get("https://zefoy.com/")
     
     a = threading.Thread(target=title1)
     b = threading.Thread(target=loop1)
@@ -184,7 +184,7 @@ if auto == 1:
     b.start()
     
 elif auto == 2:
-    driver.get("https://ketuy.com/")
+    driver.get("https://zefoy.com/")
     
     a = threading.Thread(target=title2)
     b = threading.Thread(target=loop2)
@@ -193,7 +193,7 @@ elif auto == 2:
     b.start()
     
 elif auto == 3:
-    driver.get("https://ketuy.com/")
+    driver.get("https://zefoy.com/")
     
     a = threading.Thread(target=title3)
     b = threading.Thread(target=loop3)
