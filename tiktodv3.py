@@ -115,10 +115,10 @@ def loop2():
         
     try:
         sleep(2)
-        driver.find_element_by_xpath('//*[@id="sid2"]/div/div/div/form/div/input').send_keys(vidUrl)
+        driver.find_element_by_xpath('//*[@id="sid2"]/div/form/div/input').send_keys(vidUrl)
         
         sleep(1)
-        driver.find_element_by_xpath('//*[@id="sid2"]/div/div/div/form/div/div/button').click()
+        driver.find_element_by_xpath('//*[@id="sid2"]/div/form/div/div/button').click()
         
         sleep(5)
         driver.find_element_by_xpath('//*[@id="c2VuZE9nb2xsb3dlcnNfdGlrdG9r"]/div[1]/div/form/button').click()
@@ -132,7 +132,7 @@ def loop2():
         sleep(5)
         driver.refresh()
         
-        sleep(640)
+        sleep(1800)
         loop2()
         
     except:
@@ -154,22 +154,21 @@ def loop3():
         
     try:
         sleep(2)
-        driver.find_element_by_xpath('//*[@id="sid"]/div/div/div/form/div/input').send_keys(vidUrl)
+        driver.find_element_by_xpath("//*[@id=\"sid\"]/div/form/div/input").send_keys(vidUrl)
         
         sleep(1)
-        driver.find_element_by_xpath('//*[@id="sid"]/div/div/div/form/div/div/button').click()
+        driver.find_element_by_xpath("//*[@id=\"sid\"]/div/form/div/div/button").click()
         
         sleep(5)
-        driver.find_element_by_xpath().click('//*[@id="c2VuZF9mb2xsb3dlcnNfdGlrdG9r"]/div[1]/div/form/button')
-        
+        driver.find_element_by_xpath("//*[@id=\"c2VuZF9mb2xsb3dlcnNfdGlrdG9r\"]/div[1]/div/form/button").click()
         sleep(6)
         folls = driver.find_element_by_xpath('//*[@id="c2VuZF9mb2xsb3dlcnNfdGlrdG9r"]/span').text.split()
         
         Followers += int(folls[0])
         print("[+] Followers sended!")
-        
         driver.refresh()
-        sleep(310)
+        
+        sleep(1800)
         loop3()
         
     except:
