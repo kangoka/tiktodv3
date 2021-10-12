@@ -255,7 +255,6 @@ elif auto == 5:
     print("[+] This program was created by @kangoka. [github.com/kangoka]")
     print("[+] This program was origionally uploaded to github.com/kangoka/tiktodv3.")
     print("[+] This program was majorly improved by @XxBi1a. [github.com/XxB1a]")
-    print("[+] Views xPath problem solved by @NoNameoN-A. [github.com/NoNameoN-A]")
     
 else:
     print(f"{auto} is not a valid option. Please pick 1, 2, 3, 4 or 5")
