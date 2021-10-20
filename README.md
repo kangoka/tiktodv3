@@ -1,12 +1,10 @@
-## Install the requirements
-<pre>pip install selenium
-pip install pyfiglet==0.7.5</pre>
-
 ## How can I install and use this?
 1. Git-clone this repo!
-2. Install selenium and pyfiglet using pip!
-3. Download chromedriver as your Chrome Browser version https://chromedriver.chromium.org/downloads and put it on the same folder as the python file
+2. Install modules using pip:
+   <pre>pip install -r requirements.txt</pre>
+3. Make sure you have Google Chrome installed
 4. Run the .py file!
+   <pre>python tiktodv3.py</pre>
 
 ## Note
 The first recaptcha has to be completed manually.
@@ -16,5 +14,5 @@ The first recaptcha has to be completed manually.
 
 ## Special thanks
 1. Thanks to https://zefoy.com/ for providing an amazing free service.
-2. Everyone who reccomended ketuy.
+2. Everyone who recommended ketuy.
 3. XxB1a for majorly improving tiktodv3
