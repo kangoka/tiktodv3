@@ -1,5 +1,6 @@
 from selenium import webdriver
 from os import system, name
+import chromedriver_binary
 
 from time import time, strftime, gmtime, sleep
 import pyfiglet, os, threading
@@ -28,7 +29,7 @@ if auto == 1 or auto == 2 or auto == 3 or auto == 4:
     chrome_options.add_argument("--mute-audio")
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-    driver = webdriver.Chrome(r"chromedriver.exe", options=chrome_options)
+    driver = webdriver.Chrome( options=chrome_options)
     driver.set_window_size(1024, 650)
 
     Views = 0

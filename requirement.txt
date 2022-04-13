@@ -1,0 +1,3 @@
+chromedriver-binary
+selenium
+pyfiglet==0.7.5
