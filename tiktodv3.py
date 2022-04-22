@@ -1,9 +1,14 @@
 from selenium import webdriver
 from os import system, name
 import chromedriver_binary
-
 from time import time, strftime, gmtime, sleep
 import pyfiglet, os, threading
+import chromedriver_autoinstaller
+
+# Check if the current version of chromedriver exists
+# and if it doesn't exist, download it automatically,
+# then add chromedriver to path
+chromedriver_autoinstaller.install()
 
 def clear():
     if name == 'nt':
