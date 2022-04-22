@@ -1,5 +1,8 @@
 ## How can I install and use this?
-1. Git-clone this repo!
+1. Git-clone this repo & change directory
+
+   <pre>git clone https://github.com/kangoka/tiktodv3.git</pre>
+   <pre>cd tiktodv3</pre>
 2. Install modules using pip:
    <pre>pip install -r requirements.txt</pre>
 3. Make sure you have Google Chrome installed
