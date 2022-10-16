@@ -106,7 +106,7 @@ def loop1():
     poll_rate = 1
     while True:
         try:
-            driver.find_element("xpath", "//BUTTON[@type='submit']")
+            driver.find_element("xpath", "/html/body/div[4]/div[2]/form/div/div")
             sleep(poll_rate)
             
         except:
@@ -129,7 +129,10 @@ def loop1():
         Runs += 1
         print("[+] Views sended!")
         
-        sleep(300)
+        for x in range(300):
+            sleep(1)
+            print("waiting for reset in", 300-x, end = "\r")
+
         loop1()
         
     except:
@@ -226,10 +229,10 @@ def loop3():
 
 def loop4():
     global Shares
-    
+    poll_rate = 1
     while True:
         try:
-            driver.find_element("xpath", "//BUTTON[@type='submit']")
+            driver.find_element("xpath", "/html/body/div[4]/div[2]/form/div/div/div/div/button")
             sleep(poll_rate)
             
         except:
@@ -252,8 +255,9 @@ def loop4():
         driver.refresh()
         Shares += 100
         print("[+] Shares sent!")
-        
-        sleep(300)
+        for x in range(300):
+            sleep(1)
+            print("waiting for reset in", 300-x, end = "\r")
         loop4()
         
     except:
