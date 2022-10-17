@@ -27,3 +27,4 @@ The first recaptcha has to be completed manually.
 2. Fixing likes bot
 3. Fixing followers bot
 4. Fixing counter for shares and views
+5. Make Favorites Bot
