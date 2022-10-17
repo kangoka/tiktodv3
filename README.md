@@ -21,3 +21,9 @@ The first recaptcha has to be completed manually.
 2. Everyone who recommended ketuy.
 3. XxB1a for majorly improving tiktodv3
 4. Ashwin-Iyer1 for majorly improving tiktodv4
+
+## Currently working on 🚧
+1. Fixing the timer
+2. Fixing likes bot
+3. Fixing followers bot
+4. Fixing counter for shares and views
