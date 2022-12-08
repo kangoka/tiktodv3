@@ -23,7 +23,7 @@ clear()
 system('title TIKTOD V3')
 
 print(pyfiglet.figlet_format("TIKTOD V3", font="slant"))
-print("1. Viewbot.\n2. Heartbot(UNAVAILABLE).\n3. Followerbot(UNAVAILABLE).\n4. Sharebot.\n5. Credits.\n")
+print("1. Viewbot.\n2. Heartbot(UNAVAILABLE).\n3. Followerbot(UNAVAILABLE).\n4. Sharebot(UNAVAILABLE).\n5. Favorites.\n6. Credits")
 
 auto = int(input("Mode: "))
 # once followers && || hearts is fixed
@@ -44,7 +44,7 @@ auto = int(input("Mode: "))
 #     Hearts = 0
 #     Followers = 0
 #     Shares = 0
-if auto == 1 or auto == 4:
+if auto == 1 or auto == 4 or auto == 5:
     vidUrl = input("TikTok video URL: ")
 
     start = time()
@@ -61,6 +61,7 @@ if auto == 1 or auto == 4:
     Hearts = 0
     Followers = 0
     Shares = 0
+    Favorites = 0
 
 
 
@@ -73,7 +74,7 @@ def title1(): # Update the title IF option 1 was picked.
     
     while True:
         time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
-        system(f'title TIKTOD V3 ^| Runs Sent: {beautify(Runs)} ^| Elapsed Time: {time_elapsed}')
+        system(f'title TIKTOD V4 ^| Runs Sent: {beautify(Runs)} ^| Elapsed Time: {time_elapsed}')
 
 def title2(): # Update the title IF option 2 was picked.
     global Hearts
@@ -96,7 +97,14 @@ def title4(): # Update the title IF option 4 was picked.
     
     while True:
         time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
-        system(f'title TIKTOD V3 ^| Shares Sent: {beautify(Shares)} ^| Elapsed Time: {time_elapsed}')
+        system(f'title TIKTOD V4 ^| Shares Sent: {beautify(Shares)} ^| Elapsed Time: {time_elapsed}')
+
+def title5(): # Update the title IF option 1 was picked.
+    global Favorites
+    
+    while True:
+        time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
+        system(f'title TIKTOD V4 ^| Favorites Sent: {beautify(Favorites)} ^| Elapsed Time: {time_elapsed}')
 
     
 def loop1():
@@ -264,6 +272,45 @@ def loop4():
         print("[-] An error occured. Retrying..")
         driver.refresh()
         loop4()
+def loop5():
+    global Favorites
+    poll_rate = 1
+    while True:
+        try:
+            driver.find_element("xpath", "/html/body/div[4]/div[2]/form/div/div/div/div/button")
+            sleep(poll_rate)
+            
+        except:
+            print("Captcha successfully complete")
+            break
+        
+    try:
+        sleep(2)
+        driver.find_element("xpath", "(//BUTTON[@type='button'])[13]").click()
+        
+        sleep(1)
+        driver.find_element("xpath", "(//INPUT[@type='search'])[6]").send_keys(vidUrl)
+        
+        sleep(2)
+        driver.find_element("xpath", "/html/body/div[4]/div[7]/div/form/div/div/button").click()
+
+        sleep(2)
+        driver.find_element("xpath", "/html/body/div[4]/div[7]/div/div/div[1]/div/form/button").click()
+        
+        driver.refresh()
+        Favorites += 100
+        print("[+] Favorites sent!")
+        for x in range(300):
+            sleep(1)
+            print("waiting for reset in", 300-x, end = "\r")
+        loop5()
+        
+    except:
+        print("[-] An error occured. Retrying..")
+        driver.refresh()
+        loop5()
+
+
 
 clear()
 
@@ -307,6 +354,14 @@ elif auto == 4:
     a.start()
     b.start()
 elif auto == 5:
+    driver.get("https://zefoy.com/")
+    
+    a = threading.Thread(target=title5)
+    b = threading.Thread(target=loop5)
+    
+    a.start()
+    b.start() 
+elif auto == 6:
     print("[+] This program was created by @kangoka. [github.com/kangoka]")
     print("[+] This program was origionally uploaded to github.com/kangoka/tiktodv3.")
     print("[+] This program was majorly improved by @XxBi1a. [github.com/XxB1a]")
