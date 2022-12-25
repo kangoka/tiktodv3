@@ -23,7 +23,7 @@ clear()
 system('title TIKTOD V3')
 
 print(pyfiglet.figlet_format("TIKTOD V3", font="slant"))
-print("1. Viewbot.\n2. Heartbot(UNAVAILABLE).\n3. Followerbot(UNAVAILABLE).\n4. Sharebot(UNAVAILABLE).\n5. Favorites.\n6. Credits")
+print("1. Viewbot.\n2. Heartbot(UNAVAILABLE).\n3. Followerbot(UNAVAILABLE).\n4. Sharebot.\n5. Favorites.\n6. Credits")
 
 auto = int(input("Mode: "))
 # once followers && || hearts is fixed
