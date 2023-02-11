@@ -128,10 +128,10 @@ def loop1():
         driver.find_element("xpath", "(//INPUT[@type='search'])[4]").send_keys(vidUrl)
         
         sleep(2)
-        driver.find_element("xpath", "/html/body/div[4]/div[5]/div/form/div/div/button").click()
+        driver.find_element("xpath", "/html/body/div[5]/div[5]/div/form/div/div/button").click()
 
         sleep(2)
-        driver.find_element("xpath", "/html/body/div[4]/div[5]/div/div/div[1]/div/form/button").click()
+        driver.find_element("xpath", "/html/body/div[5]/div[5]/div/div/div[1]/div/form/button").click()
         
         driver.refresh()
         Runs += 1
@@ -255,10 +255,10 @@ def loop4():
         driver.find_element("xpath", "(//INPUT[@type='search'])[5]").send_keys(vidUrl)
         
         sleep(2)
-        driver.find_element("xpath", "/html/body/div[4]/div[6]/div/form/div/div/button").click()
+        driver.find_element("xpath", "/html/body/div[5]/div[6]/div/form/div/div/button").click()
 
         sleep(2)
-        driver.find_element("xpath", "/html/body/div[4]/div[6]/div/div/div[1]/div/form/button").click()
+        driver.find_element("xpath", "/html/body/div[5]/div[6]/div/div/div[1]/div/form/button").click()
         
         driver.refresh()
         Shares += 100
@@ -292,10 +292,10 @@ def loop5():
         driver.find_element("xpath", "(//INPUT[@type='search'])[6]").send_keys(vidUrl)
         
         sleep(2)
-        driver.find_element("xpath", "/html/body/div[4]/div[7]/div/form/div/div/button").click()
+        driver.find_element("xpath", "/html/body/div[5]/div[7]/div/form/div/div/button").click()
 
         sleep(2)
-        driver.find_element("xpath", "/html/body/div[4]/div[7]/div/div/div[1]/div/form/button").click()
+        driver.find_element("xpath", "/html/body/div[5]/div[7]/div/div/div[1]/div/form/button").click()
         
         driver.refresh()
         Favorites += 100
