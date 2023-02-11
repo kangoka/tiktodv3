@@ -9,6 +9,8 @@
 3. Make sure you have Google Chrome installed
 4. Run the .py file!
    <pre>python tiktodv4.py</pre>
+   
+   **You will get "error trying again" when it runs because it is waiting for the timer. If it goes on for more than 4 minutes then please make an issue request.
 
 ## Note
 The first recaptcha has to be completed manually.
