@@ -1,6 +1,6 @@
 from selenium import webdriver
 from os import system, name
-import chromedriver_binary
+
 from time import time, strftime, gmtime, sleep
 import pyfiglet, os, threading
 import chromedriver_autoinstaller
