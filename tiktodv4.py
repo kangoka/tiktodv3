@@ -26,24 +26,6 @@ print(pyfiglet.figlet_format("TIKTOD V3", font="slant"))
 print("1. Viewbot.\n2. Heartbot(UNAVAILABLE).\n3. Followerbot(UNAVAILABLE).\n4. Sharebot.\n5. Favorites.\n6. Credits")
 
 auto = int(input("Mode: "))
-# once followers && || hearts is fixed
-# if auto == 1 or auto == 2 or auto == 3 or auto == 4:
-#     vidUrl = input("TikTok video URL: ")
-
-#     start = time()
-#     time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
-
-#     chrome_options = webdriver.ChromeOptions()
-#     chrome_options.add_argument("--mute-audio")
-#     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
-
-#     driver = webdriver.Chrome( options=chrome_options)
-#     driver.set_window_size(1024, 650)
-
-#     Runs = 0
-#     Hearts = 0
-#     Followers = 0
-#     Shares = 0
 if auto == 1 or auto == 4 or auto == 5:
     vidUrl = input("TikTok video URL: ")
 
@@ -114,7 +96,7 @@ def loop1():
     poll_rate = 1
     while True:
         try:
-            driver.find_element("xpath", "/html/body/div[4]/div[2]/form/div/div")
+            driver.find_element("xpath", "/html/body/div[5]/div[2]/form/div/div/div/div/button")
             sleep(poll_rate)
             
         except:
@@ -122,16 +104,16 @@ def loop1():
             break
     try:
         sleep(2)
-        driver.find_element("xpath", "(//BUTTON[@type='button'])[11]").click()
+        driver.find_element("xpath", "/html/body/div[6]/div/div[2]/div/div/div[5]/div/button").click()
         
         sleep(1)
         driver.find_element("xpath", "(//INPUT[@type='search'])[4]").send_keys(vidUrl)
         
         sleep(2)
-        driver.find_element("xpath", "/html/body/div[5]/div[5]/div/form/div/div/button").click()
+        driver.find_element("xpath", "/html/body/div[10]/div/form/div/div/button").click()
 
         sleep(2)
-        driver.find_element("xpath", "/html/body/div[5]/div[5]/div/div/div[1]/div/form/button").click()
+        driver.find_element("xpath", "/html/body/div[10]/div/div/div[1]/div/form/button").click()
         
         driver.refresh()
         Runs += 1
@@ -240,7 +222,7 @@ def loop4():
     poll_rate = 1
     while True:
         try:
-            driver.find_element("xpath", "/html/body/div[4]/div[2]/form/div/div/div/div/button")
+            driver.find_element("xpath", "/html/body/div[5]/div[2]/form/div/div/div/div/button")
             sleep(poll_rate)
             
         except:
@@ -249,16 +231,16 @@ def loop4():
         
     try:
         sleep(2)
-        driver.find_element("xpath", "(//BUTTON[@type='button'])[12]").click()
+        driver.find_element("xpath", "/html/body/div[6]/div/div[2]/div/div/div[6]/div/button").click()
         
         sleep(1)
         driver.find_element("xpath", "(//INPUT[@type='search'])[5]").send_keys(vidUrl)
         
         sleep(2)
-        driver.find_element("xpath", "/html/body/div[5]/div[6]/div/form/div/div/button").click()
+        driver.find_element("xpath", "/html/body/div[11]/div/form/div/div/button").click()
 
         sleep(2)
-        driver.find_element("xpath", "/html/body/div[5]/div[6]/div/div/div[1]/div/form/button").click()
+        driver.find_element("xpath", "/html/body/div[11]/div/div/div[1]/div/form/button").click()
         
         driver.refresh()
         Shares += 100
@@ -277,7 +259,7 @@ def loop5():
     poll_rate = 1
     while True:
         try:
-            driver.find_element("xpath", "/html/body/div[4]/div[2]/form/div/div/div/div/button")
+            driver.find_element("xpath", "/html/body/div[5]/div[2]/form/div/div/div/div/button")
             sleep(poll_rate)
             
         except:
@@ -286,16 +268,16 @@ def loop5():
         
     try:
         sleep(2)
-        driver.find_element("xpath", "(//BUTTON[@type='button'])[13]").click()
+        driver.find_element("xpath", "/html/body/div[6]/div/div[2]/div/div/div[7]/div/button").click()
         
         sleep(1)
         driver.find_element("xpath", "(//INPUT[@type='search'])[6]").send_keys(vidUrl)
         
         sleep(2)
-        driver.find_element("xpath", "/html/body/div[5]/div[7]/div/form/div/div/button").click()
+        driver.find_element("xpath", "/html/body/div[12]/div/form/div/div/button").click()
 
         sleep(2)
-        driver.find_element("xpath", "/html/body/div[5]/div[7]/div/div/div[1]/div/form/button").click()
+        driver.find_element("xpath", "/html/body/div[12]/div/div/div[1]/div/form/button").click()
         
         driver.refresh()
         Favorites += 100
