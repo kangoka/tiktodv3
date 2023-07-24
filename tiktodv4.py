@@ -6,7 +6,7 @@ import pyfiglet, os, threading
 import chromedriver_autoinstaller
 from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
-import keyboard
+from selenium_stealth import stealth
 
 
 # Check if the current version of chromedriver exists
@@ -28,17 +28,31 @@ print("Make sure to check Zefoy.com beforehand to see if the option you want to 
 print("1. Viewbot.\n2. Heartbot.\n3. Followerbot.\n4. Sharebot.\n5. Favorites.\n6. Credits")
 
 auto = int(input("Mode: "))
-if auto >= 1 and auto <= 6:
-    vidUrl = input("TikTok video URL: ")
-
+if auto >= 1 and auto <= 5:
     start = time()
     time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
+    options = webdriver.ChromeOptions()
+    options.add_argument("--mute-audio")
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--mute-audio")
-    chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    input("Do you want to run in Stealth Mode? Y/N: ")
+    if input == "Y":
+        options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        options.add_experimental_option('useAutomationExtension', False)
+        driver = webdriver.Chrome( options=options)
+        stealth(driver,
+        languages=["en-US", "en"],
+        vendor="Google Inc.",
+        platform="Win32",
+        webgl_vendor="Intel Inc.",
+        renderer="Intel Iris OpenGL Engine",
+        fix_hairline=True,
+        )
+    
+    vidUrl = input("TikTok video URL: ")
 
-    driver = webdriver.Chrome( options=chrome_options)
+
+
     driver.set_window_size(1024, 650)
 
     Runs = 0
