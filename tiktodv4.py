@@ -29,8 +29,9 @@ print("1. Viewbot.\n2. Heartbot.\n3. Followerbot.\n4. Sharebot.\n5. Favorites.\n
 
 auto = int(input("Mode: "))
 if auto >= 1 and auto <= 5:
+    vidUrl = input("TikTok video URL: ")
     input("Do you want to run in Stealth Mode? Y/N: ")
-    if input == "Y":
+    if input == "Y" or "y":
         options = uc.ChromeOptions()
         driver = uc.Chrome(use_subprocess=True, options=options) 
         stealth(driver,
@@ -48,15 +49,16 @@ if auto >= 1 and auto <= 5:
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
         options.add_experimental_option('useAutomationExtension', False)
+        driver = webdriver.Chrome()
     start = time()
     time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
     options.add_argument("--mute-audio")
 
     
-    vidUrl = input("TikTok video URL: ")
+    
 
 
-    driver = webdriver.Chrome()
+    
     driver.set_window_size(1024, 650)
 
     Runs = 0
@@ -114,6 +116,14 @@ def loop1():
     poll_rate = 1
     while True:
         try:
+            print("Waiting for cloud flare to be completed")
+            driver.find_element("xpath", "/html/body/div[5]/div[2]/form/div/div/div/div/button")
+            print("passed!")
+            break
+        except:
+            sleep(1)
+    while True:
+        try:
             driver.find_element("xpath", "/html/body/div[5]/div[2]/form/div/div/div/div/button")
             sleep(poll_rate)
             
@@ -155,9 +165,16 @@ def loop2():
     poll_rate = 1
     while True:
         try:
+            print("Waiting for cloud flare to be completed")
+            driver.find_element("xpath", "/html/body/div[5]/div[2]/form/div/div/div/div/button")
+            print("passed!")
+            break
+        except:
+            sleep(1)
+    while True:
+        try:
             driver.find_element("xpath", "/html/body/div[5]/div[2]/form/div/div/div/div/button")
             sleep(poll_rate)
-            
         except:
             print("Captcha successfully complete")
             break
@@ -199,9 +216,16 @@ def loop3():
     poll_rate = 1
     while True:
         try:
+            print("Waiting for cloud flare to be completed")
+            driver.find_element("xpath", "/html/body/div[5]/div[2]/form/div/div/div/div/button")
+            print("passed!")
+            break
+        except:
+            sleep(1)
+    while True:
+        try:
             driver.find_element("xpath", "/html/body/div[5]/div[2]/form/div/div/div/div/button")
             sleep(poll_rate)
-            
         except:
             print("Captcha successfully complete")
             break
@@ -244,6 +268,14 @@ def loop4():
     poll_rate = 1
     while True:
         try:
+            print("Waiting for cloud flare to be completed")
+            driver.find_element("xpath", "/html/body/div[5]/div[2]/form/div/div/div/div/button")
+            print("passed!")
+            break
+        except:
+            sleep(1)
+    while True:
+        try:
             driver.find_element("xpath", "/html/body/div[5]/div[2]/form/div/div/div/div/button")
             sleep(poll_rate)
             
@@ -281,9 +313,16 @@ def loop5():
     poll_rate = 1
     while True:
         try:
+            print("Waiting for cloud flare to be completed")
+            driver.find_element("xpath", "/html/body/div[5]/div[2]/form/div/div/div/div/button")
+            print("passed!")
+            break
+        except:
+            sleep(1)
+    while True:
+        try:
             driver.find_element("xpath", "/html/body/div[5]/div[2]/form/div/div/div/div/button")
             sleep(poll_rate)
-            
         except:
             print("Captcha successfully complete")
             break
