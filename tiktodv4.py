@@ -7,12 +7,12 @@ import chromedriver_autoinstaller
 from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
 from selenium_stealth import stealth
+import undetected_chromedriver as uc
 
 
 # Check if the current version of chromedriver exists
 # and if it doesn't exist, download it automatically,
 # then add chromedriver to path
-chromedriver_autoinstaller.install()
 
 def clear():
     if name == 'nt':
@@ -29,17 +29,10 @@ print("1. Viewbot.\n2. Heartbot.\n3. Followerbot.\n4. Sharebot.\n5. Favorites.\n
 
 auto = int(input("Mode: "))
 if auto >= 1 and auto <= 5:
-    start = time()
-    time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
-    options = webdriver.ChromeOptions()
-    options.add_argument("--mute-audio")
-    options.add_experimental_option('excludeSwitches', ['enable-logging'])
-
     input("Do you want to run in Stealth Mode? Y/N: ")
     if input == "Y":
-        options.add_experimental_option("excludeSwitches", ["enable-automation"])
-        options.add_experimental_option('useAutomationExtension', False)
-        driver = webdriver.Chrome( options=options)
+        options = uc.ChromeOptions()
+        driver = uc.Chrome(use_subprocess=True, options=options) 
         stealth(driver,
         languages=["en-US", "en"],
         vendor="Google Inc.",
@@ -48,11 +41,22 @@ if auto >= 1 and auto <= 5:
         renderer="Intel Iris OpenGL Engine",
         fix_hairline=True,
         )
+        
+    else:
+        chromedriver_autoinstaller.install()
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])
+        options.add_experimental_option('useAutomationExtension', False)
+    start = time()
+    time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
+    options.add_argument("--mute-audio")
+
     
     vidUrl = input("TikTok video URL: ")
 
 
-
+    driver = webdriver.Chrome()
     driver.set_window_size(1024, 650)
 
     Runs = 0
@@ -361,14 +365,14 @@ elif auto == 5:
     
     a.start()
     b.start() 
+
 elif auto == 6:
     print("[+] This program was created by @kangoka. [github.com/kangoka]")
     print("[+] This program was origionally uploaded to github.com/kangoka/tiktodv3.")
     print("[+] This program was majorly improved by @XxBi1a. [github.com/XxB1a]")
-    print("[+] This program was improved by @Ashwin-Iyer1. [github.com/Ashwin-Iyer1")
+    print("[+] This program was improved by @Ashwin-Iyer1. [github.com/Ashwin-Iyer1]")
     input('Press ENTER to exit')
 
     
-    
 else:
-    print(f"{auto} is not a valid option. Please pick 1, 2, 3, 4 or 5")
+    print(f"{auto} is not a valid option. Please pick 1, 2, 3, 4, 5, or 6")

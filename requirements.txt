@@ -2,3 +2,5 @@ chromedriver-binary
 selenium
 pyfiglet==0.7.5
 chromedriver-autoinstaller
+selenium_stealth
+undetected_chromedriver
