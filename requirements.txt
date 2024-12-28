@@ -1,4 +1,6 @@
-chromedriver-binary
+tkinter
+customtkinter
 selenium
-pyfiglet==0.7.5
+Pillow
+pytesseract
 chromedriver-autoinstaller

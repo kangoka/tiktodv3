@@ -1,22 +1,76 @@
-## How can I install and use this?
-0. Read the in [in-depth tutorial](https://my-tailwind-nextjs-starter-blog.vercel.app/blog/how-to-use-tiktodv3-tiktok-script-python) about how to set up this script if you have little to no knowledge in coding.
-1. Git-clone this repo & change directory
+<p align="center">
+  <img src="https://i.imgur.com/mdL7ZDV.png" alt="Big Update">
+</p>
 
-   <pre>git clone https://github.com/kangoka/tiktodv3.git</pre>
-   <pre>cd tiktodv3</pre>
-2. Install modules using pip:
-   <pre>pip install -r requirements.txt</pre>
-3. Make sure you have Google Chrome installed
-4. Run the .py file!
-   <pre>python tiktodv3.py</pre>
+# TIKTOD V3
 
-## Note
-The first recaptcha has to be completed manually.
+## Description
+TIKTOD V3 is a bot application designed to automate interactions on TikTok, such as increasing views, hearts, followers, and shares on a specified video. The bot uses technologies like Selenium for web automation and OCR (Optical Character Recognition) for solving captchas.
 
-## Proof that this works
-![Preview](https://i.imgur.com/WZY91W6.png)
+## Updates
+- Added a graphical user interface using `tkinter` and `customtkinter`.
+- Refactored codebase to follow a modular structure for better maintainability and scalability.
+- Implemented threading to handle bot operations without freezing the UI.
+- Added support for multiple modes: Views, Hearts, Followers, Shares.
+- Automatic captcha solving using OCR with `pytesseract`.
+- Enhanced logging and status updates in the UI.
+- Added dark mode support.
+- Added feature to auto-detect available modes on the website.
 
-## Special thanks
-1. Thanks to https://zefoy.com/ for providing an amazing free service.
-2. Everyone who recommended ketuy.
-3. XxB1a for majorly improving tiktodv3
+## Prerequisites
+
+- Google Chrome (version 89 or later) must be installed on your system.
+- Python 3.7 or higher must be installed on your system.
+
+
+## Installation
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/kangoka/tiktodv3.git
+    ```
+2. Navigate to the project directory:
+    ```sh
+    cd tiktodv3
+    ```
+3. Install the required packages:
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+## Usage
+
+Before running the application, edit `bot.py` and find the line:
+```python
+chrome_options.add_extension('C:/Temp/ublock.crx')
+```
+Change the path to match the location of your `ublock.crx` file.
+
+1. Run the application:
+   ```sh
+   python app.py
+   ```
+2. Enter the TikTok video URL in the provided input field.
+3. Select the desired mode (Views, Hearts, Followers, Shares) from the sidebar.
+4. Click the "Setup" button to initialize the bot.
+5. Click the "Start" button to begin the automation process.
+6. To stop the application or change the mode, click the "Stop" button.
+
+
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
+
+## Disclaimer
+
+This project is intended for educational purposes only. The use of this bot to manipulate TikTok metrics may violate TikTok's terms of service and could result in legal consequences. Use it responsibly, ethically, and at your own risk.
+
+## Acknowledgements
+
+Thanks to Zefoy for providing free services and previous contributors for their valuable input and support.
+
+## Issues
+
+If you encounter any issues while using TIKTOD V3, please open an issue on the [GitHub repository](https://github.com/kangoka/tiktodv3/issues) with detailed information about the issue, including:
+   - Steps to reproduce the issue.
+   - Any error messages or logs.
+   - Your operating system and Python version.
