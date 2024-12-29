@@ -17,6 +17,9 @@ TIKTOD V3 is a bot application designed to automate interactions on Zefoy websit
 - Added dark mode support.
 - Added feature to auto-detect available modes on the website.
 
+## Watch the Installation Video
+If you are unsure how to install the application, please watch this [installation video](https://youtu.be/50gvfn1zg-w) for a step-by-step guide, or for a demo of the bot.
+
 ## Prerequisites
 
 - Google Chrome (version 89 or later) must be installed on your system.
