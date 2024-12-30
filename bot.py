@@ -48,7 +48,7 @@ class Bot:
         self.app.mode_label.grid(row=0, column=0, padx=20, pady=10)
         self.app.mode_var = tk.StringVar(value="Views")
 
-        row = 1
+        available_modes = []
         buttons = {
             "Followers": '//button[@class="btn btn-primary rounded-0 t-followers-button"]',
             "Hearts": '//button[@class="btn btn-primary rounded-0 t-hearts-button"]',
@@ -61,19 +61,18 @@ class Bot:
         for text, xpath in buttons.items():
             try:
                 button = self.driver.find_element(By.XPATH, xpath)
-                if button.get_attribute("disabled"):
-                    rb = ctk.CTkRadioButton(self.app.mode_frame, text=text, variable=self.app.mode_var, value=text, state=tk.DISABLED)
-                else:
-                    rb = ctk.CTkRadioButton(self.app.mode_frame, text=text, variable=self.app.mode_var, value=text)
-                rb.grid(row=row, column=0, padx=20, pady=(5 if text != "Comments Hearts" else 0), sticky="w")
-                row += 1
+                if not button.get_attribute("disabled"):
+                    available_modes.append(text)
             except Exception as e:
                 log_message(self.app, f"Error finding button {text}: {e}")
+
+        self.app.mode_menu = ctk.CTkOptionMenu(self.app.mode_frame, variable=self.app.mode_var, values=available_modes)
+        self.app.mode_menu.grid(row=1, column=0, padx=20, pady=10)
 
         self.app.start_button.configure(text="Start", command=self.app.start_bot)
 
     def get_captcha(self):
-        url = "http://zefoy.com"
+        url = "http://zefoy.com"  # Replace with the actual URL of the main page
 
         try:
             self.driver.get(url)

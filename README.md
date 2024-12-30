@@ -1,11 +1,18 @@
 <p align="center">
-  <img src="https://i.imgur.com/mdL7ZDV.png" alt="Big Update">
+    <img src="https://i.imgur.com/mpXJ5nf.png" alt="Logo" width="300">
 </p>
 
 # TIKTOD V3
 
 ## Description
 TIKTOD V3 is a bot application designed to automate interactions on Zefoy website, such as increasing views, hearts, followers, and shares on a specified video. The bot uses technologies like Selenium for web automation and OCR (Optical Character Recognition) for solving captchas.
+
+## Preview
+Here is a screenshot of the TIKTOD V3 application:
+
+<p align="left">
+    <img src="https://i.imgur.com/X9PH9Hp.png" alt="TIKTOD V3 Screenshot" width="600">
+</p>
 
 ## Updates
 - Added a graphical user interface using `tkinter` and `customtkinter`.
@@ -16,9 +23,6 @@ TIKTOD V3 is a bot application designed to automate interactions on Zefoy websit
 - Enhanced logging and status updates in the UI.
 - Added dark mode support.
 - Added feature to auto-detect available modes on the website.
-
-## Watch the Installation Video
-If you are unsure how to install the application, please watch this [installation video](https://youtu.be/50gvfn1zg-w) for a step-by-step guide, or for a demo of the bot.
 
 ## Prerequisites
 
