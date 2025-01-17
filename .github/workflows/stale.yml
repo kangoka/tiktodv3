@@ -1,0 +1,27 @@
+name: Close stale issues
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Close stale issues and pull requests
+        uses: actions/stale@v9
+        with:
+          stale-issue-message: >
+            This issue has been marked as stale due to inactivity.
+            If you believe this issue is still relevant, please comment to keep it open.
+            Otherwise, it will be closed in 7 days.
+          stale-pr-message: >
+            This pull request has been marked as stale due to inactivity.
+            Please update the PR if it is still active, or it will be closed in 7 days.
+          days-before-stale: 14
+          days-before-close: 7
+          stale-issue-label: 'stale'
+          stale-pr-label: 'stale'
+          exempt-issue-labels: 'type: bug, type: docs, type: feature, type: improvement, type: question'
+          exempt-pr-labels: 'type: bug, type: docs, type: feature, type: improvement, type: question'
