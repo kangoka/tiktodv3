@@ -4,7 +4,7 @@ import threading
 import time
 from PIL import Image  # Import the Image class
 from bot import Bot
-from utils import log_message
+from utils import log_message, resource_path
 
 class App(ctk.CTk):
     def __init__(self):
@@ -12,7 +12,7 @@ class App(ctk.CTk):
 
         self.title("TIKTOD V3")
         self.geometry("800x600")
-        self.iconbitmap("./assets/logo.ico")  # Add the icon
+        self.iconbitmap(resource_path("assets/logo.ico"))
 
         # Configure grid layout
         self.grid_columnconfigure(1, weight=1)
@@ -25,8 +25,8 @@ class App(ctk.CTk):
 
         custom_font = ctk.CTkFont(family="Helvetica", size=14, weight="bold")
 
-        self.logo_image_dark = ctk.CTkImage(light_image=Image.open("./assets/dark-logo.png"), size=(100, 100))
-        self.logo_image_light = ctk.CTkImage(light_image=Image.open("./assets/light-logo.png"), size=(100, 100))
+        self.logo_image_dark = ctk.CTkImage(light_image=Image.open(resource_path("assets/dark-logo.png")), size=(100, 100))
+        self.logo_image_light = ctk.CTkImage(light_image=Image.open(resource_path("assets/light-logo.png")), size=(100, 100))
         self.logo_image_label = ctk.CTkLabel(self.sidebar_frame, image=self.logo_image_dark, text="")
         self.logo_image_label.grid(row=0, column=0, padx=20, pady=(20, 20))
 
@@ -83,6 +83,17 @@ class App(ctk.CTk):
         self.theme_switch_var = tk.StringVar(value="dark")
         self.theme_switch = ctk.CTkSwitch(self.sidebar_frame, text="Dark Mode", variable=self.theme_switch_var, onvalue="dark", offvalue="light", command=self.switch_theme, font=custom_font)
         self.theme_switch.grid(row=10, column=0, padx=20, pady=10, sticky="s")
+
+        self.version_label = ctk.CTkLabel(self, text="Version 1.0.0", fg_color="transparent")
+        self.version_label.grid(row=5, column=1, padx=20, pady=(10, 0), sticky="se")
+
+        self.github_link = ctk.CTkLabel(self, text="https://github.com/kangoka/tiktodv3", fg_color="transparent", cursor="hand2")
+        self.github_link.grid(row=6, column=1, padx=20, pady=(0, 10), sticky="se")
+        self.github_link.bind("<Button-1>", lambda e: self.open_github())
+
+    def open_github(self):
+        import webbrowser
+        webbrowser.open("https://github.com/kangoka/tiktodv3")
 
     def switch_theme(self):
         if self.theme_switch_var.get() == "dark":

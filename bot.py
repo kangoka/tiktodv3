@@ -12,7 +12,7 @@ import random
 import customtkinter as ctk
 import tkinter as tk
 import re
-from utils import log_message
+from utils import log_message, resource_path
 
 class Bot:
     def __init__(self, app, log_callback):
@@ -22,11 +22,12 @@ class Bot:
         self.running = False
 
     def setup_bot(self):
+        log_message(self.app, "Setting up bot...")
         # Automatically install the correct version of ChromeDriver
         chromedriver_autoinstaller.install()
         
         chrome_options = Options()
-        # chrome_options.add_argument("--headless")  # Enable headless mode
+        chrome_options.add_argument("--headless")  # Enable headless mode
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
@@ -34,7 +35,6 @@ class Bot:
         chrome_options.add_argument("--disable-software-rasterizer")
         chrome_options.add_argument("--log-level=3")  # Suppress most logs
         chrome_options.add_argument("--disable-logging")  # Disable logging
-        chrome_options.add_extension('C:/Temp/ublock.crx')  # Replace with the path to your uBlock Origin extension
         
         self.driver = webdriver.Chrome(options=chrome_options)
 
@@ -104,7 +104,7 @@ class Bot:
 
                         # Check if the specified element is present
                         if self.driver.find_elements(By.XPATH, '/html/body/div[6]/div/div[2]/div/div/div[1]'):
-                            log_message(self.app, "Specified element found, stopping captcha flow.")
+                            log_message(self.app, "Setup complete. Select mode and start the bot. Make sure you have entered the correct URL.")
                             break
                     else:
                         log_message(self.app, "Captcha image not found on the main page")
@@ -118,7 +118,8 @@ class Bot:
             log_message(self.app, f"Error during captcha solving: {e}")
 
     def read_captcha(self, image):
-        return pytesseract.image_to_string(image)
+        config = r'--oem 3 --psm 6'
+        return pytesseract.image_to_string(image, config=config)
 
     def parse_wait_time(self, text):
         match = re.search(r'(\d+) minute\(s\) (\d{1,2}) second\(s\)', text)
