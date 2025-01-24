@@ -30,13 +30,18 @@ class App(ctk.CTk):
         self.logo_image_label = ctk.CTkLabel(self.sidebar_frame, image=self.logo_image_dark, text="")
         self.logo_image_label.grid(row=0, column=0, padx=20, pady=(20, 20))
 
-        self.link_label = ctk.CTkLabel(self.sidebar_frame, text="TikTok video URL:", font=custom_font)
-        self.link_label.grid(row=1, column=0, padx=20, pady=10)
+        self.link_label = ctk.CTkLabel(self.sidebar_frame, text="TikTok video URL:", font=custom_font, anchor="w")  # Added anchor="w"
+        self.link_label.grid(row=1, column=0, padx=20, pady=1, sticky="w")  # Added sticky="w"
         self.link_entry = ctk.CTkEntry(self.sidebar_frame, width=180, font=custom_font)
-        self.link_entry.grid(row=2, column=0, padx=20, pady=5)
+        self.link_entry.grid(row=2, column=0, padx=20, pady=1)
+
+        self.amount_label = ctk.CTkLabel(self.sidebar_frame, text="Amount:", font=custom_font, anchor="w")  # New label
+        self.amount_label.grid(row=3, column=0, padx=20, pady=1, sticky="w")  # New label grid
+        self.amount_entry = ctk.CTkEntry(self.sidebar_frame, width=180, font=custom_font)  # New entry
+        self.amount_entry.grid(row=4, column=0, padx=20, pady=1)  # New entry grid
 
         self.start_button = ctk.CTkButton(self.sidebar_frame, text="Setup", command=lambda: threading.Thread(target=self.setup_bot).start(), font=custom_font)
-        self.start_button.grid(row=3, column=0, padx=20, pady=20)
+        self.start_button.grid(row=6, column=0, padx=20, pady=20)  # Adjusted row to move the button lower
 
         # Create main frame with tab view for log and stats
         self.main_frame = ctk.CTkFrame(self, corner_radius=0)
@@ -84,7 +89,7 @@ class App(ctk.CTk):
         self.theme_switch = ctk.CTkSwitch(self.sidebar_frame, text="Dark Mode", variable=self.theme_switch_var, onvalue="dark", offvalue="light", command=self.switch_theme, font=custom_font)
         self.theme_switch.grid(row=10, column=0, padx=20, pady=10, sticky="s")
 
-        self.version_label = ctk.CTkLabel(self, text="Version 1.0.0", fg_color="transparent")
+        self.version_label = ctk.CTkLabel(self, text="Version 1.1.0", fg_color="transparent")
         self.version_label.grid(row=5, column=1, padx=20, pady=(10, 0), sticky="se")
 
         self.github_link = ctk.CTkLabel(self, text="https://github.com/kangoka/tiktodv3", fg_color="transparent", cursor="hand2")
@@ -111,6 +116,12 @@ class App(ctk.CTk):
     def start_bot(self):
         auto = self.mode_var.get()
         vidUrl = self.link_entry.get()
+        
+        try:
+            amount = int(self.amount_entry.get())  # Get the amount entered and ensure it is a number
+        except ValueError:
+            log_message(self, "Amount must be a number")
+            return
 
         if auto in ["Views", "Hearts", "Followers", "Shares", "Favorites"]:
             if not self.running:
@@ -122,19 +133,29 @@ class App(ctk.CTk):
             self.running = True  # Set the flag to True
             self.bot.running = True  # Ensure the bot's running flag is also set to True
 
+            self.link_entry.configure(state="disabled")  # Disable the URL entry
+            self.amount_entry.configure(state="disabled")  # Disable the amount entry
+            self.mode_menu.configure(state="disabled")  # Disable the option menu
+
             threading.Thread(target=self.update_stats_label).start()  # Start the stats update thread
 
-            threading.Thread(target=self.bot.loop, args=(vidUrl, auto)).start()
+            threading.Thread(target=self.bot.loop, args=(vidUrl, auto, amount)).start()  # Pass the amount to the bot loop
             
             self.start_button.configure(text="Stop", command=self.stop_bot)
         else:
             log_message(self, f"{auto} is not a valid option. Please pick Views, Hearts, Followers, Shares, or Favorites")
 
     def stop_bot(self):
-        log_message(self, "Stop button pressed")
+        log_message(self, "Bot stopped")
+
+        self.link_entry.configure(state="normal")  # Enable the URL entry
+        self.amount_entry.configure(state="normal")  # Enable the amount entry
+        self.mode_menu.configure(state="normal")  # Enable the option menu
+
         self.running = False  # Set the flag to False
         self.bot.running = False  # Ensure the bot's running flag is also set to False
         self.elapsed_time = time.time() - self.start_time  # Save the elapsed time
+
         self.start_button.configure(text="Start", command=self.start_bot)
 
     def update_stats_label(self):

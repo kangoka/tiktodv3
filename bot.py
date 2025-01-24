@@ -22,7 +22,7 @@ class Bot:
         self.running = False
 
     def setup_bot(self):
-        log_message(self.app, "Setting up bot...")
+        log_message(self.app, "Setting up the bot...")
         # Automatically install the correct version of ChromeDriver
         chromedriver_autoinstaller.install()
         
@@ -46,7 +46,7 @@ class Bot:
 
         self.app.mode_label = ctk.CTkLabel(self.app.mode_frame, text="Select Mode:")
         self.app.mode_label.grid(row=0, column=0, padx=20, pady=10)
-        self.app.mode_var = tk.StringVar(value="Views")
+        self.app.mode_var = tk.StringVar(value="----------")
 
         available_modes = []
         buttons = {
@@ -150,7 +150,7 @@ class Bot:
             self.app.favorites += increment
             log_message(self.app, f"Favorites incremented by {increment}")
 
-    def loop(self, vidUrl, mode):
+    def loop(self, vidUrl, mode, amount):
         data = {
             "Followers": {
                 "MainButton": '//button[@class="btn btn-primary rounded-0 t-followers-button"]',
@@ -230,6 +230,16 @@ class Bot:
 
                 # Increment counts based on mode
                 self.increment_mode_count(mode)
+
+                # Check if the amount limit is reached
+                if (mode == "Views" and self.app.views >= amount) or \
+                   (mode == "Hearts" and self.app.hearts >= amount) or \
+                   (mode == "Followers" and self.app.followers >= amount) or \
+                   (mode == "Shares" and self.app.shares >= amount) or \
+                   (mode == "Favorites" and self.app.favorites >= amount):
+                    log_message(self.app, f"{mode} limit reached: {amount}")
+                    self.app.stop_bot()
+                    break
 
                 time.sleep(wait_seconds)
             except Exception as e:
