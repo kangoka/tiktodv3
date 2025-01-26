@@ -120,7 +120,8 @@ class Bot:
                     if attempt < 2:
                         time.sleep(3)  # Wait for 3 seconds before retrying
                     else:
-                        log_message(self.app, "Max attempts reached. Exiting.")
+                        log_message(self.app, "Max attempts reached. Exiting. Please restart the application.")
+                        return  # Exit the function
         except Exception as e:
             log_message(self.app, f"Error during captcha solving: {e}")
 
