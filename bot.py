@@ -38,6 +38,13 @@ class Bot:
         
         self.driver = webdriver.Chrome(options=chrome_options)
 
+        # Block requests to fundingchoicesmessages.google.com
+        self.driver.execute_cdp_cmd(
+            "Network.setBlockedURLs",
+            {"urls": ["https://fundingchoicesmessages.google.com/*"]}
+        )
+        self.driver.execute_cdp_cmd("Network.enable", {})  # Enable network interception
+
         self.get_captcha()
 
         # Create a frame for the mode selection
@@ -113,7 +120,8 @@ class Bot:
                     if attempt < 2:
                         time.sleep(3)  # Wait for 3 seconds before retrying
                     else:
-                        log_message(self.app, "Max attempts reached. Exiting.")
+                        log_message(self.app, "Max attempts reached. Exiting. Please restart the application.")
+                        return  # Exit the function
         except Exception as e:
             log_message(self.app, f"Error during captcha solving: {e}")
 

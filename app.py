@@ -89,7 +89,7 @@ class App(ctk.CTk):
         self.theme_switch = ctk.CTkSwitch(self.sidebar_frame, text="Dark Mode", variable=self.theme_switch_var, onvalue="dark", offvalue="light", command=self.switch_theme, font=custom_font)
         self.theme_switch.grid(row=10, column=0, padx=20, pady=10, sticky="s")
 
-        self.version_label = ctk.CTkLabel(self, text="Version 1.1.0", fg_color="transparent")
+        self.version_label = ctk.CTkLabel(self, text="Version 1.2.0", fg_color="transparent")
         self.version_label.grid(row=5, column=1, padx=20, pady=(10, 0), sticky="se")
 
         self.github_link = ctk.CTkLabel(self, text="https://github.com/kangoka/tiktodv3", fg_color="transparent", cursor="hand2")
