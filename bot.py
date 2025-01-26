@@ -38,6 +38,13 @@ class Bot:
         
         self.driver = webdriver.Chrome(options=chrome_options)
 
+        # Block requests to fundingchoicesmessages.google.com
+        self.driver.execute_cdp_cmd(
+            "Network.setBlockedURLs",
+            {"urls": ["https://fundingchoicesmessages.google.com/*"]}
+        )
+        self.driver.execute_cdp_cmd("Network.enable", {})  # Enable network interception
+
         self.get_captcha()
 
         # Create a frame for the mode selection
