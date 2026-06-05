@@ -5,3 +5,5 @@ debug_attempt_1.png
 debug_attempt_2.png
 debug_attempt_3.png
 page_source.html
+.venv/
+venv/
