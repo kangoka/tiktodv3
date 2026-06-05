@@ -1,0 +1,2 @@
+[console_scripts]
+chromedriver-path = chromedriver_autoinstaller.utils:print_chromedriver_path
