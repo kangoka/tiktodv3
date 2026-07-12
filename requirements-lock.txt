@@ -1,0 +1,17 @@
+# Resolved from requirements.txt for the supported Windows/Python environment.
+anyio==4.14.1
+certifi==2026.6.17
+cloakbrowser==0.3.28
+customtkinter==5.2.2
+darkdetect==0.8.0
+greenlet==3.5.3
+h11==0.16.0
+httpcore==1.0.9
+httpx==0.28.1
+idna==3.18
+packaging==26.2
+Pillow==12.2.0
+playwright==1.59.0
+pyee==13.0.1
+pytesseract==0.3.13
+typing_extensions==4.16.0

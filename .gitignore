@@ -1,2 +1,31 @@
+# Python
 __pycache__/
-cpatcha.png
+*.py[cod]
+*.pyd
+.venv/
+venv/
+
+# Quality tooling
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Builds and runtime output
+build/
+dist/
+*.spec
+*.log
+captcha.png
+
+# Local configuration
+.env
+.env.*
+.local-docs/
+.idea/
+.vscode/
+
+# Operating systems
+.DS_Store
+Thumbs.db

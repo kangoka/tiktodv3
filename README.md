@@ -1,95 +1,169 @@
 <p align="center">
-    <img src="https://i.imgur.com/mpXJ5nf.png" alt="Logo" width="300">
+  <img src="assets/dark-logo.png" alt="TIKTOD V3 logo" width="180">
 </p>
-
-## Table of Contents
-- [Description](#description)
-- [Preview](#preview)
-- [Features](#features)
-- [Watch the Installation Video](#watch-the-installation-video-outdated)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Disclaimer](#disclaimer)
-- [Acknowledgements](#acknowledgements)
-- [Issues](#issues)
 
 # TIKTOD V3
 
-## Description
-TIKTOD V3 is a bot application designed to automate interactions on Zefoy website, such as increasing views, hearts, followers, and shares on a specified video. The bot uses technologies like Selenium for web automation and OCR (Optical Character Recognition) for solving captchas.
+TIKTOD V3 is a Windows desktop utility that coordinates selected interactions
+through Zefoy for a supplied TikTok video URL. It uses CustomTkinter for the UI,
+CloakBrowser/Playwright for browser control, and Tesseract OCR for CAPTCHA text.
 
-## Preview
-Here is a screenshot of the TIKTOD V3 application:
+## Read this before using the application
 
-<p align="left">
-    <img src="https://i.imgur.com/X9PH9Hp.png" alt="TIKTOD V3 Screenshot" width="600">
-</p>
+The application sends the TikTok URL you enter to **Zefoy**, a third-party
+service. It also automates interactions that may violate TikTok's or Zefoy's
+rules. That can expose an account to restrictions and creates privacy, legal,
+and contractual risk.
+
+Use the application only when you are authorized to do so. Never enter account
+credentials or private links. The desktop UI requires an explicit acknowledgment
+of these facts before Setup can run.
 
 ## Features
-- User-friendly interface using `customtkinter`.
-- Added feature to auto-detect available modes on the website.
-- Automatic captcha solving using OCR with `pytesseract`.
-- Light mode and dark mode support.
-- Detailed stats.
 
-## Watch the Installation Video (outdated)
-If you are unsure how to install the application, please watch this [installation video](https://youtu.be/50gvfn1zg-w) for a step-by-step guide, or for a demo of the bot.
+- Explicit `IDLE → SETTING_UP → READY → RUNNING → STOPPING` lifecycle.
+- Automatic discovery of currently available supported modes.
+- In-memory CAPTCHA OCR; generated CAPTCHA images are not stored on disk.
+- Stable-image CAPTCHA readiness checks that reject loading placeholders.
+- Confirmed send counts when the service reports them.
+- At-a-glance target progress, percentage, elapsed time, per-mode session counts,
+  and total confirmed activity.
+- Bounded retry/backoff behavior, explicit rate-limit pauses, and interruptible
+  cooldowns.
+- Light and dark themes with persisted preference.
+- Keyboard-accessible controls, status feedback, and read-only copyable logs.
+- Preflight messages for missing OCR or browser dependencies.
 
-## Prerequisites
-- Google Chrome (version 89 or later) must be installed on your system. You can download it from [here](https://www.google.com/chrome/).
-- Ensure Tesseract OCR is installed on your system. You can download it from [here](https://github.com/tesseract-ocr/tesseract/releases/latest). 
-Additionally, make sure to add Tesseract to your system PATH. Follow this [tutorial](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/) for instructions on how to add it to the PATH on Windows 10.
-- Python 3.7 or higher must be installed on your system. You can download it from [here](https://www.python.org/downloads/).
+## Requirements
 
-> **Note:** If you plan to use the executable version, you do not need to install Python. Ensure that Python (if you plan to use the source code) and Tesseract OCR are added to your system's PATH.
+- Windows 10 or newer.
+- Python **3.10 or newer** when running from source.
+- [Tesseract OCR](https://github.com/tesseract-ocr/tesseract/releases/latest)
+  installed and available on `PATH`.
+- Internet access during Setup and automation.
 
+CloakBrowser downloads and caches its patched Chromium build on first use. The
+download is approximately 200 MB and normally lives under `~/.cloakbrowser`.
 
-## Installation
+## Install from source
 
-1. Download the latest release zip or executable from the [releases page](https://github.com/kangoka/tiktodv3/releases).
-2. If you downloaded the zip file, extract it to a directory of your choice.
-3. Navigate to the extracted directory or the directory containing the executable.
+Use an isolated environment so project dependencies do not conflict with global
+packages:
 
-## Usage
+```powershell
+git clone https://github.com/kangoka/tiktodv3.git
+cd tiktodv3
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements-lock.txt
+python app.py
+```
 
-### Option 1: Using Source Code
+## Application workflow
 
-1. Install the required packages:
-    ```sh
-    pip install -r requirements.txt
-    ```
-2. Run the application:
-    ```sh
-    python app.py
-    ```
+1. Read and accept the authorization and data-use notice.
+2. Enter a public TikTok video URL and positive target amount.
+3. Select **Setup**. The app checks Tesseract, launches CloakBrowser, solves the
+   CAPTCHA, and discovers supported modes.
+4. Choose an available mode and select **Start**.
+5. Select **Stop** or press Escape to stop safely.
 
-### Option 2: Using Executable
+Disabled and unsupported modes are not offered. Counts are updated only after a
+send reaches a confirmed cooldown response; if the service does not report the
+exact amount, the log clearly labels the fallback as estimated.
 
-1. Run the executable file directly.
+## Keyboard shortcuts
 
-2. Enter the TikTok video URL in the provided input field.
-3. Click the "Setup" button to initialize the bot.
-4. Select the desired mode (Views, Hearts, Followers, Shares) from the sidebar.
-5. Click the "Start" button to begin the automation process.
-6. To stop the application or change the mode, click the "Stop" button.
+| Shortcut | Action |
+|---|---|
+| `Alt+S` | Setup, Start, or Stop according to current state |
+| `Alt+M` | Cycle the available mode |
+| `Alt+T` | Toggle light/dark theme |
+| `Ctrl+Tab` | Switch between Log and Stats |
+| `Ctrl+L` | Focus the TikTok URL field |
+| `Ctrl+G` | Open the GitHub repository |
+| `Escape` | Stop an active run |
 
+Tab and Shift+Tab also traverse the inputs, primary action, theme control, mode
+selector, disclosure acknowledgment, log actions, and GitHub action.
 
-## Contributing
-Contributions are welcome! Please fork the repository and submit a pull request with your changes.
+## Local data
+
+The app stores two preferences in `~/.tiktodv3/settings.json`:
+
+- selected theme;
+- whether the risk notice was acknowledged.
+
+TikTok URLs, counters, and log output are not intentionally persisted by the
+application. Zefoy and the browser/network stack remain separate trust domains.
+
+## Verification
+
+This project intentionally does not use a `tests/` directory. Deterministic,
+offline checks live in the root verification command:
+
+```powershell
+python verify.py
+python verify_gui.py
+python -m compileall -q .
+ruff check .
+ruff format --check .
+mypy .
+```
+
+These checks do not launch CloakBrowser, solve a live CAPTCHA, or contact Zefoy.
+Live compatibility depends on third-party markup and must be validated manually
+by an authorized operator.
+
+## Build an executable
+
+From an activated environment, run:
+
+```powershell
+.\build.ps1
+```
+
+The build produces `dist/tiktodv3.exe`. Tesseract remains an external system
+requirement. Release maintainers should sign the executable and publish a SHA-256
+checksum.
+
+## Troubleshooting
+
+- **Tesseract unavailable:** install it, add its installation directory to
+  `PATH`, restart the terminal, and retry Setup.
+- **First Setup takes a long time:** CloakBrowser may be downloading its patched
+  Chromium build.
+- **No modes available:** the third-party service has no supported mode enabled;
+  retry later.
+- **Too many requests:** this is a remote rate limit, not a local CAPTCHA or retry
+  failure. Keep only one instance running and let the automatic 90-180 second
+  pause finish. If it remains active across three checks, the run stops; wait at
+  least 15-30 minutes before restarting. VPN/proxy switching can worsen trust and
+  is not a reliable or appropriate workaround.
+- **Automation stops after three errors:** the circuit breaker prevented an
+  infinite retry loop. Copy the log, confirm the service page still works, and
+  retry Setup.
+- **GUI opens but a release executable fails:** rebuild using the pinned
+  dependencies by running `.\build.ps1` from an activated environment.
+
+## Contributing and reporting issues
+
+Run `python verify.py`, Ruff, and compilation before proposing a change. Keep UI
+work on the Tk main thread, keep Playwright work on the dedicated bot worker, and
+never add live-service calls to offline verification.
+
+Report vulnerabilities privately to the repository maintainer. Do not include
+sensitive TikTok URLs or exploit details in public issues.
+
+## License
+
+Licensed under the [Apache License 2.0](LICENSE). Copyright 2025-2026 kangoka
+and contributors. Third-party components retain their respective licenses; see
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Disclaimer
 
-This project is intended for educational purposes only. The use of this bot to manipulate TikTok metrics may violate TikTok's terms of service and could result in legal consequences. Use it responsibly, ethically, and at your own risk.
-
-## Acknowledgements
-
-Thanks to Zefoy for providing free services and previous contributors for their valuable input and support.
-
-## Issues
-
-If you encounter any issues while using TIKTOD V3, please open an issue on the [GitHub repository](https://github.com/kangoka/tiktodv3/issues) with detailed information about the issue, including:
-   - Steps to reproduce the issue.
-   - Any error messages or logs.
-   - Your operating system and Python version.
+This software is provided without warranty. Its use may violate third-party
+terms or applicable rules. The operator is responsible for authorization,
+compliance, accounts, data, and consequences arising from use.

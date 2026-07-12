@@ -1,0 +1,49 @@
+name: Quality checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.13']
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements-lock.txt -r requirements-dev.txt
+
+      - name: Check dependency consistency
+        run: python -m pip check
+
+      - name: Lint and format
+        run: |
+          ruff check .
+          ruff format --check .
+
+      - name: Type check
+        run: mypy .
+
+      - name: Compile source
+        run: python -m compileall -q .
+
+      - name: Run offline verification
+        run: |
+          python verify.py
+          python verify_gui.py
