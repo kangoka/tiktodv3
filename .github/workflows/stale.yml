@@ -3,6 +3,12 @@ name: Close stale issues
 on:
   schedule:
     - cron: '0 0 * * *' # Runs every day at midnight
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
 
 jobs:
   stale:
@@ -10,7 +16,7 @@ jobs:
 
     steps:
       - name: Close stale issues and pull requests
-        uses: actions/stale@v9
+        uses: actions/stale@5bef64f19d7facfb25b37b414482c7164d639639 # v9
         with:
           stale-issue-message: >
             This issue has been marked as stale due to inactivity.
@@ -23,5 +29,5 @@ jobs:
           days-before-close: 7
           stale-issue-label: 'stale'
           stale-pr-label: 'stale'
-          exempt-issue-labels: 'type: bug, type: docs, type: feature, type: improvement, type: question'
-          exempt-pr-labels: 'type: bug, type: docs, type: feature, type: improvement, type: question'
+          exempt-issue-labels: 'pinned, security'
+          exempt-pr-labels: 'pinned, security, work-in-progress'

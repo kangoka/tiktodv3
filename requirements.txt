@@ -1,5 +1,5 @@
-customtkinter
-selenium
-Pillow
-pytesseract
-chromedriver-autoinstaller
+customtkinter==5.2.2
+cloakbrowser==0.3.28
+playwright==1.59.0
+Pillow==12.2.0
+pytesseract==0.3.13
