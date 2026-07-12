@@ -5,8 +5,8 @@ import threading
 import time
 from typing import Any
 
-from captcha_solver import CaptchaNotReadyError, CaptchaSolver
-from config import (
+from .captcha_solver import CaptchaNotReadyError, CaptchaSolver
+from .config import (
     CAPTCHA_READY_TIMEOUT_SECONDS,
     CAPTCHA_SAMPLE_INTERVAL_MS,
     CAPTCHA_STABLE_SAMPLES,

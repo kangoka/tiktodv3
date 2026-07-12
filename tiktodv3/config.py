@@ -1,3 +1,5 @@
+"""Application metadata and automation policy."""
+
 from dataclasses import dataclass
 
 APP_NAME = "TIKTOD V3"

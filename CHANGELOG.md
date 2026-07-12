@@ -2,7 +2,12 @@
 
 ## Unreleased
 
-No changes yet.
+### Changed
+
+- Organized runtime modules under the `tiktodv3` package, offline checks under
+  `verification`, and build implementations under `scripts`.
+- Preserved the original root launch, verification, and build commands through
+  thin compatibility wrappers.
 
 ## 2.0.0 — 2026-07-12
 

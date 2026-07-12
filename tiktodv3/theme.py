@@ -1,5 +1,7 @@
 """Semantic visual tokens for the TIKTOD desktop interface."""
 
+"""Shared GUI dimensions and color tokens."""
+
 COLOR = {
     "window": ("#EEF3F5", "#101A1F"),
     "surface": ("#F7FAFB", "#18262D"),
