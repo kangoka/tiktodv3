@@ -57,8 +57,11 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install -r requirements-lock.txt
-python app.py
+python -m tiktodv3
 ```
+
+The existing `python app.py` command remains available as a compatibility
+launcher.
 
 ## Application workflow
 
@@ -101,16 +104,19 @@ application. Zefoy and the browser/network stack remain separate trust domains.
 ## Verification
 
 This project intentionally does not use a `tests/` directory. Deterministic,
-offline checks live in the root verification command:
+offline checks live in the `verification` package:
 
 ```powershell
-python verify.py
-python verify_gui.py
+python -m verification.core
+python -m verification.gui
 python -m compileall -q .
 ruff check .
 ruff format --check .
 mypy .
 ```
+
+The previous `python verify.py` and `python verify_gui.py` commands remain as
+compatibility wrappers.
 
 These checks do not launch CloakBrowser, solve a live CAPTCHA, or contact Zefoy.
 Live compatibility depends on third-party markup and must be validated manually
@@ -118,15 +124,38 @@ by an authorized operator.
 
 ## Build an executable
 
-From an activated environment, run:
+From an activated environment, run the canonical build script:
 
 ```powershell
-.\build.ps1
+.\scripts\build.ps1
 ```
 
 The build produces `dist/tiktodv3.exe`. Tesseract remains an external system
 requirement. Release maintainers should sign the executable and publish a SHA-256
 checksum.
+
+Publishing the checksum is safe: it is a one-way file fingerprint, not executable
+content or a secret. It lets users detect a corrupted or replaced download when
+they obtain the checksum from the trusted release page. A checksum does not prove
+publisher identity, so code signing remains the stronger authenticity control.
+
+The root `.\build.ps1` wrapper remains supported. Release packaging is available
+through `.\scripts\package-release.ps1` or its root compatibility wrapper.
+
+## Project structure
+
+```text
+tiktodv3/       Runtime package, GUI, automation, OCR, settings, and shared policy
+verification/   Deterministic offline core and GUI checks (no tests directory)
+scripts/        Build and release-packaging implementations
+assets/         Application icons and light/dark logo artwork
+.github/        Continuous integration and repository automation
+app.py          Backward-compatible source launcher
+*.ps1           Backward-compatible build and packaging launchers
+```
+
+Public documentation, dependency manifests, licensing, and notices stay at the
+repository root so standard tooling and GitHub can discover them easily.
 
 ## Troubleshooting
 
@@ -145,13 +174,14 @@ checksum.
   infinite retry loop. Copy the log, confirm the service page still works, and
   retry Setup.
 - **GUI opens but a release executable fails:** rebuild using the pinned
-  dependencies by running `.\build.ps1` from an activated environment.
+  dependencies by running `.\scripts\build.ps1` from an activated environment.
 
 ## Contributing and reporting issues
 
-Run `python verify.py`, Ruff, and compilation before proposing a change. Keep UI
-work on the Tk main thread, keep Playwright work on the dedicated bot worker, and
-never add live-service calls to offline verification.
+Run `python -m verification.core`, `python -m verification.gui`, Ruff, and
+compilation before proposing a change. Keep UI work on the Tk main thread, keep
+Playwright work on the dedicated bot worker, and never add live-service calls to
+offline verification.
 
 Report vulnerabilities privately to the repository maintainer. Do not include
 sensitive TikTok URLs or exploit details in public issues.

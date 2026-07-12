@@ -1,3 +1,5 @@
+"""In-memory CAPTCHA readiness checks and OCR."""
+
 import hashlib
 import re
 from io import BytesIO

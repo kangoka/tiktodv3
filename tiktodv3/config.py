@@ -1,7 +1,9 @@
+"""Application metadata and automation policy."""
+
 from dataclasses import dataclass
 
 APP_NAME = "TIKTOD V3"
-APP_VERSION = "2.0.0"
+APP_VERSION = "2.0.1"
 REPOSITORY_URL = "https://github.com/kangoka/tiktodv3"
 SERVICE_URL = "https://zefoy.com"
 

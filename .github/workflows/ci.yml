@@ -41,9 +41,9 @@ jobs:
         run: mypy .
 
       - name: Compile source
-        run: python -m compileall -q .
+        run: python -m compileall -q tiktodv3 verification app.py verify.py verify_gui.py
 
       - name: Run offline verification
         run: |
-          python verify.py
-          python verify_gui.py
+          python -m verification.core
+          python -m verification.gui

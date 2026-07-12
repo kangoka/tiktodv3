@@ -4,6 +4,17 @@
 
 No changes yet.
 
+## 2.0.1 — 2026-07-12
+
+### Changed
+
+- Organized runtime modules under the `tiktodv3` package, offline checks under
+  `verification`, and build implementations under `scripts`.
+- Preserved the original root launch, verification, and build commands through
+  thin compatibility wrappers.
+- Updated CI, PyInstaller packaging, documentation, and resource lookup for the
+  organized package layout.
+
 ## 2.0.0 — 2026-07-12
 
 ### Added
